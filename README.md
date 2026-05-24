@@ -82,6 +82,58 @@ search:
     - json
 ```
 
+## Configuration
+
+By default, the tool queries:
+
+```text
+http://127.0.0.1:8080
+```
+
+If your SearXNG instance runs somewhere else, set `SEARXNG_URL` before starting pi:
+
+```sh
+export SEARXNG_URL='http://127.0.0.1:8888'
+pi
+```
+
+Examples:
+
+```sh
+# Different local port
+export SEARXNG_URL='http://127.0.0.1:8888'
+
+# LAN or remote host
+export SEARXNG_URL='http://192.168.1.50:8080'
+
+# Reverse-proxied HTTPS instance
+export SEARXNG_URL='https://search.example.com'
+```
+
+The tool also accepts a per-call `base_url` argument, but `SEARXNG_URL` is the recommended persistent configuration.
+
+If you use the included compose setup and want to change its local port, copy `.env.example` to `.env` inside `searxng/` and edit `SEARXNG_PORT`:
+
+```sh
+cd searxng
+cp .env.example .env
+$EDITOR .env
+podman compose up -d
+```
+
+Example `searxng/.env`:
+
+```env
+SEARXNG_PORT=8888
+SEARXNG_BASE_URL=http://localhost:8888/
+```
+
+Then configure pi to match:
+
+```sh
+export SEARXNG_URL='http://127.0.0.1:8888'
+```
+
 ## Tool
 
 Registers:
