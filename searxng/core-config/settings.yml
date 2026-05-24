@@ -1,0 +1,26 @@
+use_default_settings: true
+
+server:
+  # Local-only instance for pi-searxng-search. Regenerate with:
+  #   openssl rand -hex 32
+  secret_key: "9ebcfcfae5701896a97f34452ed5b7f81ef2ac00533ff1c5664e85709344d3d6"
+  bind_address: "0.0.0.0"
+  port: 8080
+  limiter: false
+  image_proxy: false
+
+search:
+  # Required for the plugin: /search?q=...&format=json otherwise returns 403.
+  formats:
+    - html
+    - json
+  safe_search: 0
+  autocomplete: ""
+  default_lang: "auto"
+
+ui:
+  static_use_hash: true
+
+redis:
+  # Disable Valkey/Redis for this local developer instance.
+  url: false
