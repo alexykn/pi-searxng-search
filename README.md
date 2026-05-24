@@ -134,6 +134,44 @@ Then configure pi to match:
 export SEARXNG_URL='http://127.0.0.1:8888'
 ```
 
+### Persist `SEARXNG_URL`
+
+The `export ...` command above only affects the current terminal session. To make it stick, add it to your shell config.
+
+For **bash**, add this to `~/.bashrc`:
+
+```sh
+echo "export SEARXNG_URL='http://127.0.0.1:8888'" >> ~/.bashrc
+```
+
+Then restart your terminal, or run:
+
+```sh
+source ~/.bashrc
+```
+
+For **zsh**, add this to `~/.zshrc`:
+
+```sh
+echo "export SEARXNG_URL='http://127.0.0.1:8888'" >> ~/.zshrc
+```
+
+Then restart your terminal, or run:
+
+```sh
+source ~/.zshrc
+```
+
+For **fish**, run:
+
+```fish
+set -Ux SEARXNG_URL 'http://127.0.0.1:8888'
+```
+
+Fish stores universal variables automatically, so you do not need to edit a config file.
+
+Replace `http://127.0.0.1:8888` with your actual SearXNG URL.
+
 ## Tool
 
 Registers:
